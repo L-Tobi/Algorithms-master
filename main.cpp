@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 	const int n = 10;
 	
 	std::bitset<n> a("1001010101");
-	std::bitset<n> b("1011011011");
+	std::bitset<n> b("1011011111");
 	std::cout << BinaryAdd(a, b) << std::endl;
 
 /*
