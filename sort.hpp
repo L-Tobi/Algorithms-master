@@ -1,3 +1,7 @@
+#ifndef TOBI_SORT_HPP
+#define TOBI_SORT_HPP
+
+
 #include<vector>
 
 template<class T>
@@ -132,3 +136,5 @@ int InsertionSort(std::vector<T>& sort)
 	}
 	return 0;
 }
+
+#endif // !TOBI_SORT_HPP

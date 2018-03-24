@@ -1,3 +1,7 @@
+#ifndef TOBI_MATH_ALGORITHMS_HPP
+#define TOBI_MATH_ALGORITHMS_HPP
+
+
 #include <bitset>
 #include <iostream>
 template<int n = 10>
@@ -34,3 +38,5 @@ std::bitset<n+1> BinaryAdd(std::bitset<n> a, std::bitset<n> b)
 
 	return c;
 }
+
+#endif // !TOBI_MATH_ALGORITHMS_HPP
