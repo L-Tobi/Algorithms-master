@@ -5,10 +5,25 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
+#include <algorithm>
+
 namespace tobi {
 
 	typedef unsigned int uint;
 	typedef unsigned char uchar;
+
+
+	template<typename T, int size>
+	void RandomShuffle(T& array)
+	{
+		if (array.size() < size)
+			array.resize(size);
+		for (int i = 0; i < size; i++)
+		{
+			array[i] = i;
+		}
+		std::random_shuffle(array.begin(), array.end());
+	}
 
 	template<class T, bool feed = true>
 	void PrintVector(const std::vector<T> vector)

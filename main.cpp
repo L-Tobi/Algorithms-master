@@ -13,31 +13,38 @@ int main(int argc, char** argv)
 	std::vector<int> src;
 //	std::vector<int> src{ 3,41,52,26,38,57,9,49 };
 	
-	int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	std::array<int, 100> _search;
-	for (int i = 0; i < 100; i++)
-	{
-		if (i == 90)
-		{
-			continue;
-		}
-		_search[i] = i;
-	}
+	//int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	//std::array<int, 100> _search;
+	//for (int i = 0; i < 100; i++)
+	//{
+	//	if (i == 90)
+	//	{
+	//		continue;
+	//	}
+	//	_search[i] = i;
+	//}
 	//std::random_shuffle(_search.begin(), _search.end());
 	//for (int i = 0; i < _search.size(); i++)
 	//	printf("%d\n", _search[i]);
-	printf("BS : %d\n", BinarySearch<int, 100>(_search, 200, 0, 100));
+//	printf("BS : %d\n", BinarySearch<int, 100>(_search, 200, 0, 100));
 
-//	for (int i = 0; i < 100; i++)src.push_back(i);
-
-
+	std::vector<int> aaa;
+	tobi::RandomShuffle<std::vector<int>, 200>(aaa);
+	tobi::PrintVector(aaa);
+	
+//	for (int i = 0; i < 10000; i++)src.push_back(i);
+//
+//
 //	std::random_shuffle(src.begin(), src.end());
-//	tobi::WriteDataToTxt<int>("./data/out.txt", src);
-	tobi::Timer<std::chrono::milliseconds> begin;
+////	tobi::WriteDataToTxt<int>("./data/out.txt", src);
+//	tobi::Timer<std::chrono::milliseconds> begin;
 //	MergeSort<int>(src);
 //	printf(" pass time : %d\n", begin.elaplsed());
-	
-//	ChooseSort<int>(src);
+//
+//	tobi::Timer<std::chrono::milliseconds> _begin;
+//	std::sort(src.begin(), src.end());
+//	printf("c++ pass time : %d\n", _begin.elaplsed());
+////	ChooseSort<int>(src);
 //	tobi::PrintVector<int>(src);
 
 	//const int n = 10;	

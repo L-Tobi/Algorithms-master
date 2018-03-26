@@ -4,7 +4,7 @@
 
 #include<vector>
 
-template<class T>
+template<typename T>
 int Merge(std::vector<T>& left, std::vector<T>& right, std::vector<T>& result)
 {
 	std::vector<T> res;
@@ -42,7 +42,7 @@ int Merge(std::vector<T>& left, std::vector<T>& right, std::vector<T>& result)
 	return 0;
 }
 
-template<class T>
+template<typename T>
 int MergeSort(std::vector<T>& sort)
 {
 	int _start = 0;
@@ -73,7 +73,7 @@ int MergeSort(std::vector<T>& sort)
 
 
 //Time Complexity: N2
-template<class T>
+template<typename T>
 int ChooseSort(std::vector<T>& sort)
 {
 	if (sort.empty())
@@ -99,7 +99,7 @@ int ChooseSort(std::vector<T>& sort)
 }
 
 //Time Complexity: N2
-template<class T, bool sort_type_up = true>
+template<typename T, bool sort_type_up = true>
 int InsertionSort(std::vector<T>& sort)
 {
 	if (sort.empty())
