@@ -10,9 +10,16 @@
 int main(int argc, char** argv)
 {
 	srand((unsigned)time(0));
-
+	std::array<int, 100> src;
+	for (int i = 0; i < 100; i++)
+	{
+		src[i] = i;
+	}
+	RandomizeInPlace<int, 100>(src);
+	for (int i = 0; i < src.size(); i++)
+		printf("%d\n", src[i]);
 //	std::vector<int> src{ 2, 3, -4, 5, -2, -3, 8, -1, -3, 1, 0, -5, 1, 4, -2, 6, 2, 1, -3, -5, -2, 0, -1, 0, 3, 2, 3, 4, 5, -2, -3 };
-	std::vector<int> src{ 2, 3, -4, 5, -2, -3, -8, 90, -3, 1, 0, -5, 1, 4, -2, 6, 2, 1, -3, -5, -2, 0, -1, 0, 3, 2, 3, -4, 5, -2, -3 };
+//	std::vector<int> src{ 2, 3, -4, 5, -2, -3, -8, 90, -3, 1, 0, -5, 1, 4, -2, 6, 2, 1, -3, -5, -2, 0, -1, 0, 3, 2, 3, -4, 5, -2, -3 };
 	//int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
 	//std::array<int, 100> _search;
 	//for (int i = 0; i < 100; i++)
@@ -27,11 +34,11 @@ int main(int argc, char** argv)
 	//for (int i = 0; i < _search.size(); i++)
 	//	printf("%d\n", _search[i]);
 //	printf("BS : %d\n", BinarySearch<int, 100>(_search, 200, 0, 100));
-	int low = 0;
-	int high = src.size()-1;
-	int sum = 0;
-	FindMaximumSubarray_Recursion(src, low, high, sum);
-	printf("low : %d  high : %d  sum : %d\n", low, high, sum);
+	//int low = 0;
+	//int high = src.size()-1;
+	//int sum = 0;
+	//FindMaximumSubarray_Recursion(src, low, high, sum);
+	//printf("low : %d  high : %d  sum : %d\n", low, high, sum);
 	//std::vector<int> aaa;
 	//tobi::RandomShuffle<std::vector<int>, 200>(aaa);
 	//tobi::PrintVector(aaa);
