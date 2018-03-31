@@ -25,8 +25,8 @@ namespace tobi {
 		std::random_shuffle(array.begin(), array.end());
 	}
 
-	template<class T = std::vector<int>, bool feed = true>
-	void PrintVector(const T vector)
+	template<class T, bool feed = true>
+	void PrintVector(const std::vector<T> vector)
 	{
 		if (feed)
 		{
