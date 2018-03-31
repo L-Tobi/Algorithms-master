@@ -2,6 +2,7 @@
 #define ALGORITHM_SUBJECT_HPP
 #include <vector>
 #include <limits.h>
+#include <cstdlib>
 /*
 	test data :
 	{2, 3, -4, 5, -2, -3, 8, -1, -3, 1, 0, -5, 1, 4, -2, 6, 2, 1, -3, -5, -2, 0, -1, 0, 3, 2, 3, 4, 5, -2, -3};
@@ -76,5 +77,38 @@ void FindMaximumSubarray_Recursion(const std::vector<int> src, int& low, int& hi
 		}
 	}
 }
+
+template<typename T, int size>
+void PermuteBySorting(std::array<int, size>& array)
+{
+	srand(time(NULL));
+	std::array<T, size> _possibility{ 0 };
+	int _rand_sum = std::pow(size, 3);
+	if (_rand_sum > RAND_MAX)
+	{
+		_rand_sum = RAND_MAX;
+	}
+	for (int i = 0; i < size; i++)
+	{
+		_possibility[i] = rand() % _rand_sum + 1;
+	}
+	//sort
+
+}
+
+template<typename T, int size>
+void RandomizeInPlace(std::array<T, size>& array)
+{
+	srand(time(NULL));
+	for (int i = 0; i < size; i++)
+	{
+		int _index = rand() % (size - i) + i;
+		int _tmp = array[i];
+		array[i] = array[_index];
+		array[_index] = _tmp;
+	}
+}
+
+
 
 #endif // !ALGORITHM_SUBJECT_HPP
