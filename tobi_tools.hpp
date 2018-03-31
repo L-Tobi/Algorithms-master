@@ -16,8 +16,8 @@ namespace tobi {
 	template<typename T, int size>
 	void RandomShuffle(T& array)
 	{
-		if (array.size() < size)
-			array.resize(size);
+		//if (array.size() < size)
+		//	array.resize(size);
 		for (int i = 0; i < size; i++)
 		{
 			array[i] = i;

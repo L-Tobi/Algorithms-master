@@ -1,8 +1,65 @@
 #ifndef TOBI_SORT_HPP
 #define TOBI_SORT_HPP
-
-
 #include<vector>
+
+
+template<typename T, int size>
+void sort(std::array<T, size>& a, int index, int arraysize)
+{
+	T max;
+	int _max_index = index;
+	if ((index << 1) + 1 >= arraysize)
+	{
+		return;
+	}
+	if ((index << 1) + 1 < arraysize && a[index] < a[(index << 1) + 1])
+	{
+		max = a[(index << 1) + 1];
+		_max_index = (index << 1) + 1;
+	}
+	else
+	{
+		max = a[index];
+	}
+
+	if ((index << 1) + 2 < arraysize && max < a[(index <<1) + 2])
+	{
+		max = a[(index << 1) + 2];
+		_max_index = (index << 1) + 2;
+	}
+
+	if (_max_index == index)
+	{
+		return;
+	}
+	else
+	{
+		a[_max_index] = a[index];
+		a[index] = max;
+	}
+
+	sort<T, size>(a, _max_index, arraysize);
+}
+
+template<typename T, int size>
+int HeapSort(std::array<T, size>& array)
+{
+	for (int i = (size >> 1) - 1; i >= 0 ; i--)
+	{
+		sort(array, i, size);
+	}
+
+
+	for (int i = size - 1; i > 0; i--)
+	{
+		int _tmp = array[0];
+		array[0] = array[i];
+		array[i] = _tmp;
+		sort<T, size>(array, 0, i);
+	}
+
+	return 0;
+}
 
 template<typename T>
 int Merge(std::vector<T>& left, std::vector<T>& right, std::vector<T>& result)
