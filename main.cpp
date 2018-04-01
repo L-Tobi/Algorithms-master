@@ -35,21 +35,22 @@ int main(int argc, char** argv)
 	//std::vector<int> aaa;
 	//tobi::RandomShuffle<std::vector<int>, 200>(aaa);
 	//tobi::PrintVector(aaa);
-
-//	std::array<int, 10> src{ 5,3,17,10,84,19,6,22,9,100 };
-	std::array<int, 100000> newsrc;
 	std::vector<int> src;
-	
-	tobi::RandomShuffle<std::array<int, 100000>, 100000>(newsrc);
-	for (int i = 0; i < 100000; i++)src.push_back(newsrc[i]);
+//	std::array<int, 10> src{ 5,3,17,10,84,19,6,22,9,100 };
+	std::array<int, 200000> newsrc;
+//	std::array<int, 12> src{ 13,19,9,5,12,8,7,4,21,2,6,11 };
+
+	tobi::RandomShuffle<std::array<int, 200000>, 200000>(newsrc);
+
+	for (int i = 0; i < 200000; i++)src.push_back(newsrc[i]);
 	tobi::Timer<std::chrono::microseconds> _begin;
-	HeapSort<int,100000>(newsrc);
-	printf("heap pass time : %d\n", _begin.elaplsed());
+	//HeapSort<int,100000>(newsrc);
+	QuickSort<int, 200000>(newsrc);
+	printf("my qucik pass time : %d\n", _begin.elaplsed());
 	//for (int i = 0; i < newsrc.size(); i++)
 	//{
 	//	printf("%d \n", newsrc[i]);
 	//}
-
 //
 //
 //	std::random_shuffle(src.begin(), src.end());
@@ -57,7 +58,7 @@ int main(int argc, char** argv)
 	tobi::Timer<std::chrono::microseconds> begin;
 //	MergeSort<int>(src);
 	std::sort(src.begin(), src.end());
-	printf("merge pass time : %d\n", begin.elaplsed());
+	printf("c++ pass time : %d\n", begin.elaplsed());
 //
 //	tobi::Timer<std::chrono::milliseconds> _begin;
 //	std::sort(src.begin(), src.end());

@@ -1,10 +1,59 @@
 #ifndef TOBI_SORT_HPP
 #define TOBI_SORT_HPP
 #include<vector>
+template<typename T, int size> inline
+int _Quick_sort(std::array<T, size>& array, int start, int main)
+{
+	if (start == main || main < 0)
+	{
+		return -1;
+	}
+	int _left, _right, _middle;
+	_left = _right = _middle = start;
 
+	for (int i = start; i <= main; i++)
+	{
+		if (array[i] <= array[main])
+		{
+			T _tmp = array[i];
+			array[i] = array[_middle];
+			array[_middle] = _tmp;
+			_middle++;
+			_right++;
+		}
+		else
+		{
+			_right++;
+		}
+	}
+	return _middle - 1;
+}
+
+template<typename T, int size> inline
+int _Main_sort(std::array<T, size>& array, int start, int main)
+{
+	if (start < main)
+	{
+		int _middle = _Quick_sort<T, size>(array, start, main);
+		_Main_sort<T, size>(array, start, _middle - 1);
+		_Main_sort<T, size>(array, _middle, main);
+	}
+	return 0;
+}
 
 template<typename T, int size>
-void sort(std::array<T, size>& a, int index, int arraysize)
+void QuickSort(std::array<T, size>& array)
+{
+	int _index = size - 1;
+
+	_Main_sort<T, size>(array, 0, size - 1);
+
+	return;
+}
+
+
+template<typename T, int size> inline
+void _Heap_sort(std::array<T, size>& a, int index, int arraysize)
 {
 	T max;
 	int _max_index = index;
@@ -38,7 +87,7 @@ void sort(std::array<T, size>& a, int index, int arraysize)
 		a[index] = max;
 	}
 
-	sort<T, size>(a, _max_index, arraysize);
+	_Heap_sort<T, size>(a, _max_index, arraysize);
 }
 
 template<typename T, int size>
@@ -46,7 +95,7 @@ int HeapSort(std::array<T, size>& array)
 {
 	for (int i = (size >> 1) - 1; i >= 0 ; i--)
 	{
-		sort(array, i, size);
+		_Heap_sort(array, i, size);
 	}
 
 
@@ -55,14 +104,14 @@ int HeapSort(std::array<T, size>& array)
 		int _tmp = array[0];
 		array[0] = array[i];
 		array[i] = _tmp;
-		sort<T, size>(array, 0, i);
+		_Heap_sort<T, size>(array, 0, i);
 	}
 
 	return 0;
 }
 
-template<typename T>
-int Merge(std::vector<T>& left, std::vector<T>& right, std::vector<T>& result)
+template<typename T> inline
+int _Merge_sort(std::vector<T>& left, std::vector<T>& right, std::vector<T>& result)
 {
 	std::vector<T> res;
 	int j = 0;
@@ -99,6 +148,7 @@ int Merge(std::vector<T>& left, std::vector<T>& right, std::vector<T>& result)
 	return 0;
 }
 
+//Time Complexity: nlgn
 template<typename T>
 int MergeSort(std::vector<T>& sort)
 {
@@ -121,7 +171,7 @@ int MergeSort(std::vector<T>& sort)
 		}
 		MergeSort(_left);
 		MergeSort(_right);
-		Merge<T>(_left, _right, sort);
+		_Merge_sort<T>(_left, _right, sort);
 	}
 
 	return 0;
@@ -129,7 +179,7 @@ int MergeSort(std::vector<T>& sort)
 
 
 
-//Time Complexity: N2
+//Time Complexity: n2
 template<typename T>
 int ChooseSort(std::vector<T>& sort)
 {
@@ -155,7 +205,7 @@ int ChooseSort(std::vector<T>& sort)
 	return 0;
 }
 
-//Time Complexity: N2
+//Time Complexity: n2
 template<typename T, bool sort_type_up = true>
 int InsertionSort(std::vector<T>& sort)
 {
