@@ -1,3 +1,3 @@
 # Algorithms-master
-Practice For Algorithms
+Construct algorithms repository for myself.
 Developed by liupenghui

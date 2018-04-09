@@ -40,12 +40,12 @@ int main(int argc, char** argv)
 	std::array<int, 200000> newsrc;
 //	std::array<int, 12> src{ 13,19,9,5,12,8,7,4,21,2,6,11 };
 
-	tobi::RandomShuffle<std::array<int, 200000>, 200000>(newsrc);
+	tobi::tools::RandomShuffle<std::array<int, 200000>, 200000>(newsrc);
 
 	for (int i = 0; i < 200000; i++)src.push_back(newsrc[i]);
-	tobi::Timer<std::chrono::microseconds> _begin;
+	tobi::tools::Timer<std::chrono::microseconds> _begin;
 	//HeapSort<int,100000>(newsrc);
-	QuickSort<int, 200000>(newsrc);
+	tobi::algorithm::sort::QuickSort<int, 200000>(newsrc);
 	printf("my qucik pass time : %d\n", _begin.elaplsed());
 	//for (int i = 0; i < newsrc.size(); i++)
 	//{
@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 //
 //	std::random_shuffle(src.begin(), src.end());
 ////	tobi::WriteDataToTxt<int>("./data/out.txt", src);
-	tobi::Timer<std::chrono::microseconds> begin;
+	tobi::tools::Timer<std::chrono::microseconds> begin;
 //	MergeSort<int>(src);
 	std::sort(src.begin(), src.end());
 	printf("c++ pass time : %d\n", begin.elaplsed());
