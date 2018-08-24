@@ -6,21 +6,26 @@
 #include <iostream>
 #include <ctime>
 #include <algorithm>
+#include <numeric>
 typedef unsigned int uint;
 typedef unsigned char uchar;
 
 namespace tobi {namespace tools {
 
-		template<typename T, int size>
-		void RandomShuffle(T& array)
+
+
+
+		//template<typename T, int size>
+		template<class Iterator, class T> inline
+		void RandomShuffle(Iterator begin, Iterator end, int start_num)
 		{
-			//if (array.size() < size)
-			//	array.resize(size);
-			for (int i = 0; i < size; i++)
+			if (begin!= end)
 			{
-				array[i] = i;
+				std::iota(array.begin(), array.end(), start_num);
+				std::random_shuffle(array.begin(), array.end());
+				return;
 			}
-			std::random_shuffle(array.begin(), array.end());
+			return;
 		}
 
 		template<class T, bool feed = true>

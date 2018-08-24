@@ -40,7 +40,9 @@ int main(int argc, char** argv)
 	std::array<int, 200000> newsrc;
 //	std::array<int, 12> src{ 13,19,9,5,12,8,7,4,21,2,6,11 };
 
-	tobi::tools::RandomShuffle<std::array<int, 200000>, 200000>(newsrc);
+	//tobi::tools::RandomShuffle<std::array<int, 200000>, 200000>(newsrc);
+	//tobi::tools::RandomShuffle(newsrc.begin(), newsrc.end(), 0);
+
 
 	for (int i = 0; i < 200000; i++)src.push_back(newsrc[i]);
 	tobi::tools::Timer<std::chrono::microseconds> _begin;
