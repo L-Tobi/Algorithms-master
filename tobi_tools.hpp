@@ -11,35 +11,36 @@ typedef unsigned int uint;
 typedef unsigned char uchar;
 
 namespace tobi {namespace tools {
-
-
-
-
 		//template<typename T, int size>
-		template<class Iterator, class T> inline
-		void RandomShuffle(Iterator begin, Iterator end, int start_num)
+		template<class Iterator> inline
+		void RandomShuffle(Iterator first, Iterator last, int start_num)
 		{
-			if (begin!= end)
+			if (first != last)
 			{
-				std::iota(array.begin(), array.end(), start_num);
-				std::random_shuffle(array.begin(), array.end());
+				std::iota(first, last, start_num);
+				std::random_shuffle(first, last);
 				return;
 			}
 			return;
 		}
 
-		template<class T, bool feed = true>
-		void PrintVector(const std::vector<T> vector)
+		//template<class T, bool feed = true>
+		template<class Iterator> inline
+		void PrintVector(Iterator first, Iterator last, bool feed = false)
 		{
 			if (feed)
 			{
-				for (int i = 0; i < vector.size(); i++)
-					printf("%d\n", vector[i]);
+				for (; first != last; first++)
+				{
+					std::cout << *first << " ";
+				}
 			}
 			else
 			{
-				for (int i = 0; i < vector.size(); i++)
-					printf("%d ", vector[i]);
+				for (; first != last; first++)
+				{
+					std::cout << *first << std::endl;
+				}
 			}
 		}
 
