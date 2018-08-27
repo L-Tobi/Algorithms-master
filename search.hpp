@@ -2,40 +2,54 @@
 #define TOBI_SEARCH_HPP
 #include <array>
 #include <vector>
+//
+//template<typename T, int array_count>
+//int BinarySearch(const std::array<T, array_count> data,const T element, int start, int end)
+//{
+//	const int _mid = (end + start) >> 1;
+//	if (data[_mid] == element)
+//		return _mid;
+//	int res = -1;
+//	if (end - start == 1)
+//	{
+//		return res;
+//	}
+//	if (element < data[_mid])
+//	{
+//		res = BinarySearch<T, array_count>(data, element,start,_mid);
+//	}
+//	else
+//	{
+//		res = BinarySearch<T, array_count>(data, element,_mid, end);
+//	}
+//	return res;
+//}
 
-template<typename T, int array_count>
-int BinarySearch(const std::array<T, array_count> data,const T element, int start, int end)
+template<class Iterator, class T> inline
+int BinarySearch(Iterator first, Iterator last, const T& value)
 {
-	const int _mid = (end + start) >> 1;
-	if (data[_mid] == element)
-		return _mid;
-	int res = -1;
-	if (end - start == 1)
+	if (std::distance(first, last) < 100)
 	{
-		return res;
-	}
-	if (element < data[_mid])
-	{
-		res = BinarySearch<T, array_count>(data, element,start,_mid);
+		std::lower_bound(first, last, value);
 	}
 	else
 	{
-		res = BinarySearch<T, array_count>(data, element,_mid, end);
+		//cuda version
 	}
-	return res;
 }
 
-template<typename T>
-int LinearSearch(std::vector<T> src, T dst)
+template<class Iterator, class T> inline
+Iterator LinearSearch(Iterator first, Iterator last, const T& value)
 {
-	for (int i = 0; i < src.size(); i++)
+	if (std::distance(first,last) < 100)
 	{
-		if (src[i] == dst)
-		{
-			return i;
-		}
+		std::find(first, last, value);
 	}
-	return -1;
+	else
+	{
+		//cuda version
+	}
+	
 }
 
 #endif // !TOBI_SEARCH_HPP
